@@ -1,0 +1,26 @@
+{
+  "name": "@sequel/mcp",
+  "module": "bin/index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run bin/index.ts install -d postgresql -c claude",
+    "build": "bun build bin/index.ts --outdir dist",
+    "typecheck": "bun x tsc --noEmit",
+    "lint": "bun x eslint . --ext .ts",
+    "start": "bun run bin/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "inquirer": "^12.5.0",
+    "mysql2": "^3.14.0",
+    "ora": "^8.2.0",
+    "postgres": "^3.4.5"
+  }
+}
