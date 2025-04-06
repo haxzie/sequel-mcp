@@ -7,15 +7,25 @@ import {
   type MCPConfig,
 } from "client/types";
 import fs from "fs";
+import os from "os";
+import path from "path";
 
 function getClaudeConfigPath() {
-  const os = process.platform;
-  switch (os) {
+  const platform = process.platform;
+  // Get the home directory in a cross-platform way
+  const homeDir = os.homedir();
+  const appData = process.env.APPDATA || process.env.HOME || homeDir;
+
+  switch (platform) {
     case "darwin": // macOS
-      return `${process.env.HOME}/Library/Application Support/Claude/claude_desktop_config.json`;
+      return path.join(homeDir, "Library", "Application Support", "Claude", "claude_desktop_config.json");
 
     case "win32": // Windows
-      return `${process.env.APPDATA}\\Claude\\claude_desktop_config.json`;
+      return path.join(appData, "Claude", "claude_desktop_config.json");
+      
+    case "linux": // Linux
+      return path.join(homeDir, ".config", "Claude", "claude_desktop_config.json");
+
     default:
       throw new Error("Unsupported operating system for Claude");
   }
