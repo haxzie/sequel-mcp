@@ -1,7 +1,7 @@
 {
   "name": "@sequelsh/mcp",
   "module": "bin/index.ts",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "dist/index.js",
   "description": "Sequel's Model Context Protocol CLI for Databace MCPs",
   "type": "module",
@@ -17,7 +17,7 @@
     "lint": "bun x eslint . --ext .ts",
     "start": "bun run bin/index.ts -d postgresql",
     "mcp:install": "bun run bin/index.ts install -d postgresql -c claude",
-    "publish": "bun run build && bun run typecheck && npm publish --access public"
+    "prepublishOnly": "bun run build && bun run typecheck"
   },
   "devDependencies": {
     "@types/bun": "latest"
