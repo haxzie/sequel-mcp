@@ -2,9 +2,12 @@
   "name": "@sequelsh/mcp",
   "module": "bin/index.ts",
   "version": "0.0.10",
-  "main": "dist/index.js",
   "description": "Sequel's Model Context Protocol CLI for Databace MCPs",
   "type": "module",
+  "bin": {
+    "@sequelsh/mcp": "dist/index.js"
+  },
+  "@sequelsh/mcp": "dist/index.js",
   "author": {
     "name": "Sequel",
     "email": "support@sequel.sh",
