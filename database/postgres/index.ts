@@ -42,6 +42,9 @@ export const Postgres = createDatabaseConnector({
       },
       query: async (query, readOnly) => {
         try {
+          if (readOnly) {
+            await sql`SET TRANSACTION READ ONLY;`.raw();
+          }
           const rows = await sql`${sql.unsafe(query)}`.execute();
           const affectedRows = rows.count || 0;
           return {

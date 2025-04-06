@@ -11,12 +11,12 @@ export const generateMCPConfig = async (
   mcpClient: MCPClient
 ): Promise<void> => {
   const mcpConfig: MCPConfig = {
-    command: "npx",
+    command: "node",
     args: [
-      "@sequel/mcp",
+      "/Users/musthaqahamad/projects/sequel.sh/mcp/dist/index.js",
       "run",
       databaseConfig.id,
-      `--trasport`,
+      `--transport`,
       mcpClient.transport,
     ],
     env: {

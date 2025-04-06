@@ -3,11 +3,12 @@
   "module": "bin/index.ts",
   "type": "module",
   "scripts": {
-    "dev": "bun run bin/index.ts install -d postgresql -c claude",
-    "build": "bun build bin/index.ts --outdir dist",
+    "dev": "bun run bin/index.ts install",
+    "build": "bun build bin/index.ts --outdir dist --target node",
     "typecheck": "bun x tsc --noEmit",
     "lint": "bun x eslint . --ext .ts",
-    "start": "bun run bin/index.ts"
+    "start": "bun run bin/index.ts postgresql",
+    "mcp:install": "bun run bin/index.ts install -d postgresql -c claude"
   },
   "devDependencies": {
     "@types/bun": "latest"
@@ -16,6 +17,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.8.0",
     "chalk": "^5.4.1",
     "commander": "^13.1.0",
     "inquirer": "^12.5.0",

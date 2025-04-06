@@ -2,6 +2,8 @@
 import { Command } from "commander";
 import { runConnectCommand } from "@/commands/install";
 import { runServer } from "@/commands/run";
+import type { DatabaseType } from "database/types";
+import type { MCPTransport } from "client/types";
 
 const program = new Command();
 
@@ -18,7 +20,7 @@ program
   .command("run <database>")
   .description("Run MCP server")
   .option("-t, --transport <transport>", "Transport type (sse/io)", "sse")
-  .action((database: string, options: { transport: string }) => {
+  .action((database: DatabaseType, options: { transport: MCPTransport }) => {
     runServer(database, options.transport);
   });
 
