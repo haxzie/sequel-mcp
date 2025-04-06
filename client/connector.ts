@@ -10,19 +10,39 @@ export const generateMCPConfig = async (
   connectionString: string,
   mcpClient: MCPClient
 ): Promise<void> => {
-  const mcpConfig: MCPConfig = {
-    command: "node",
-    args: [
-      "/Users/musthaqahamad/projects/sequel.sh/mcp/dist/index.js",
-      "run",
-      databaseConfig.id,
-      `--transport`,
-      mcpClient.transport,
-    ],
-    env: {
-      DATABASE_URL: connectionString,
-    },
-  };
+  let mcpConfig: MCPConfig;
+
+  if (process.env.NODE_ENV === "development") {
+
+    mcpConfig = {
+      command: "node",
+      args: [
+        "/Users/musthaqahamad/projects/sequel.sh/mcp/dist/index.js",
+        "run",
+        databaseConfig.id,
+        `--transport`,
+        mcpClient.transport,
+      ],
+      env: {
+        DATABASE_URL: connectionString,
+      },
+    };
+  } else {
+    mcpConfig = {
+      command: "npx",
+      args: [
+        "-y",
+        "@sequelsh/mcp",
+        "run",
+        databaseConfig.id,
+        `--transport`,
+        mcpClient.transport,
+      ],
+      env: {
+        DATABASE_URL: connectionString,
+      },
+    };
+  }
 
   // inject the configuration into the mcp client
   await mcpClient.injectConfig(mcpConfig, databaseConfig.id);

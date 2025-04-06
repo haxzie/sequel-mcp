@@ -7,7 +7,7 @@
     "build": "bun build bin/index.ts --outdir dist --target node",
     "typecheck": "bun x tsc --noEmit",
     "lint": "bun x eslint . --ext .ts",
-    "start": "bun run bin/index.ts postgresql",
+    "start": "bun run bin/index.ts -d postgresql",
     "mcp:install": "bun run bin/index.ts install -d postgresql -c claude"
   },
   "devDependencies": {
