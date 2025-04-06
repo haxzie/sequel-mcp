@@ -16,7 +16,8 @@
     "typecheck": "bun x tsc --noEmit",
     "lint": "bun x eslint . --ext .ts",
     "start": "bun run bin/index.ts -d postgresql",
-    "mcp:install": "bun run bin/index.ts install -d postgresql -c claude"
+    "mcp:install": "bun run bin/index.ts install -d postgresql -c claude",
+    "publish": "bun run build && bun run typecheck && bun run lint && bun publish"
   },
   "devDependencies": {
     "@types/bun": "latest"
