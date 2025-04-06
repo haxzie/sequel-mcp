@@ -1,7 +1,7 @@
 {
   "name": "@sequelsh/mcp",
   "module": "bin/index.ts",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "dist/index.js",
   "bin": {
     "mcp": "dist/index.js"
@@ -20,10 +20,13 @@
     "lint": "bun x eslint . --ext .ts",
     "start": "bun run bin/index.ts -d postgresql",
     "mcp:install": "bun run bin/index.ts install -d postgresql -c claude",
-    "prepublishOnly": "bun run build && bun run typecheck"
+    "prepublishOnly": "bun run build && bun run typecheck",
+    "release": "standard-version --release-as patch",
+    "release:major": "standard-version --release-as major"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "standard-version": "^9.5.0"
   },
   "peerDependencies": {
     "typescript": "^5"
