@@ -20,7 +20,7 @@ const getCursorConfigPath = () => {
 const getCursorClientConfig = async () => {
   try {
     const configPath = getCursorConfigPath();
-    const config = await import(configPath);
+    const config = await fs.readdirSync(configPath, { encoding: "utf-8" });
     // Assuming the config file exports a JSON object
     const configData = JSON.parse(JSON.stringify(config)) as MCPClinetConfig;
     return configData;

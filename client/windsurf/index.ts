@@ -19,7 +19,7 @@ function getWindSurfConfigPath() {
 async function getWindSurfClientConfig(): Promise<MCPClinetConfig> {
   try {
     const configPath = getWindSurfConfigPath();
-    const config = await import(configPath);
+    const config = await fs.readdirSync(configPath, { encoding: "utf-8" });
     // Assuming the config file exports a JSON object
     const configData = JSON.parse(JSON.stringify(config));
     return configData;
