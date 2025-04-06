@@ -1,7 +1,14 @@
 {
   "name": "@sequel/mcp",
   "module": "bin/index.ts",
+  "version": "0.0.1",
+  "description": "Sequel's Model Context Protocol CLI for Databace MCPs",
   "type": "module",
+  "author": {
+    "name": "Sequel",
+    "email": "support@sequel.sh",
+    "url": "https://sequel.sh"
+  },
   "scripts": {
     "dev": "bun run bin/index.ts install",
     "build": "bun build bin/index.ts --outdir dist --target node",
