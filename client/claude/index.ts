@@ -34,11 +34,14 @@ function getClaudeConfigPath() {
 async function getClaudeClientConfig(): Promise<MCPClinetConfig> {
   try {
     const configPath = getClaudeConfigPath();
+    console.log("Claude config path: ", configPath);
     const config = await import(configPath);
     // Assuming the config file exports a JSON object
     const configData = JSON.parse(JSON.stringify(config)) as MCPClinetConfig;
+    console.log("Config found in: ", configPath);
     return configData;
   } catch (error) {
+    console.log("Claude config file not found", error);
     return {
       mcpServers: {},
     };
@@ -69,6 +72,7 @@ export const Claude = createMCPClient({
           [serverName]: config,
         };
       } else {
+        console.log(`Creating new config...`)
         claudeConfig = {
           mcpServers: {
             [serverName]: config,
