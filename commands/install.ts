@@ -4,7 +4,7 @@ import { promptConnectionString } from "@/prompts/connectionPrompt";
 import { DatabaseRegistry, isValidDatabaseType } from "database";
 import ora from "ora";
 import { isValidMCPClient, MCPClientRegistry } from "client";
-import { generateMCPConfig } from "client/connector";
+import { injectMCPConfig } from "utils/config";
 import type { DatabaseType } from "database/types";
 import type { MCPClientType } from "client/types";
 
@@ -78,7 +78,13 @@ export async function runConnectCommand({
     ora(`Generating MCP config...`).start();
     try {
       const client = MCPClientRegistry[mcpClient];
-      await generateMCPConfig(databaseConfig, connectionString, client);
+      await injectMCPConfig({
+        database: dbType,
+        credentials: {
+          connectionString,
+        },
+        client: mcpClient,
+      });
       spinner.succeed(`MCP config generated successfully for ${client.name}!`);
       process.exit(0);
     } catch (error) {

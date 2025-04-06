@@ -24,5 +24,5 @@ export interface MCPClient {
   name: string;
   description: string;
   transport: MCPTransport;
-  injectConfig: (config: MCPConfig, database: string) => Promise<void>;
+  configPath: string;
 }
