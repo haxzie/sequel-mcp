@@ -13,7 +13,7 @@ Install a specific database MCP server
 npx -y @sequelsh/mcp@latest install -d postgresql
 ```
 
-## Supported Databases
+### Supported Databases
 ```shell
 npx -y @sequelsh/mcp@latest install -d <database>
 ```
@@ -21,10 +21,29 @@ npx -y @sequelsh/mcp@latest install -d <database>
 - [X] MySQL `mysql`
 - [X] ClickHouse `clickhouse`
 
-## Supported MCP Clients
+### Supported MCP Clients
 ```shell
 npx -y @sequelsh/mcp@latest install -c <client>
 ```
 - [X] Claude `claude`
 - [X] Cursor `cursor`
 - [X] WindSurf `windsurf`
+
+
+## Setting up for development
+This project uses Bun, so make sure you have bun installed
+
+### Install dependencies
+```shell
+bun install
+```
+
+### Build
+```shell
+bun run build
+```
+
+### Run MCP Install
+```shell
+bun run mcp:install
+```
