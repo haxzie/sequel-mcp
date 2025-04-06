@@ -32,7 +32,7 @@ export const generateMCPConfig = async (
       command: "npx",
       args: [
         "-y",
-        "@sequelsh/mcp",
+        "@sequel/mcp",
         "run",
         databaseConfig.id,
         `--transport`,
