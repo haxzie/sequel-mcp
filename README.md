@@ -1,15 +1,30 @@
 # @sequel/mcp
+MCP servers for your databases. Query your database from your favourite MCP clients.
 
-To install dependencies:
+## Usage
+Install the MCP server to your client
 
-```bash
-bun install
+```shell
+npx -y @sequelsh/mcp@latest install
 ```
 
-To run:
-
-```bash
-bun run index.ts
+Install a specific database MCP server
+```shell
+npx -y @sequelsh/mcp@latest install -d postgresql
 ```
 
-This project was created using `bun init` in bun v1.2.3. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+## Supported Databases
+```shell
+npx -y @sequelsh/mcp@latest install -d <database>
+```
+- [X] PostgreSQL `postgresql`
+- [X] MySQL `mysql`
+- [X] ClickHouse `clickhouse`
+
+## Supported MCP Clients
+```shell
+npx -y @sequelsh/mcp@latest install -c <client>
+```
+- [X] Claude `claude`
+- [X] Cursor `cursor`
+- [X] WindSurf `windsurf`
