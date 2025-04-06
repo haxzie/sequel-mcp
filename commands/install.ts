@@ -5,7 +5,7 @@ import { DatabaseRegistry, isValidDatabaseType } from "database";
 import ora from "ora";
 import { isValidMCPClient, MCPClientRegistry } from "client";
 import { injectMCPConfig } from "utils/config";
-import type { DatabaseType } from "database/types";
+import type { DatabaseConnection, DatabaseType } from "database/types";
 import type { MCPClientType } from "client/types";
 
 export async function runConnectCommand({
@@ -51,21 +51,23 @@ export async function runConnectCommand({
     process.exit(1);
   }
 
+  // Ask the user for the connection string
   const connection = await promptConnectionString(dbType);
   const connectionString = connection.connectionString;
-
   const databaseConfig = DatabaseRegistry[dbType];
 
   // test the connection
   const spinner = ora("Testing database connection...").start();
+  let dbConnection: DatabaseConnection | null = null;
   try {
     // test the connection
-    const connection = await databaseConfig.connect({
+    dbConnection = await databaseConfig.connect({
       connectionString,
     });
-    const testResult = await connection.test();
+    const testResult = await dbConnection.test();
     // disconnect
-    await connection.disconnect();
+    await dbConnection.disconnect();
+    dbConnection = null;
 
     if (!testResult.success) {
       spinner.fail(`Connection failed: ${testResult.message}`);
@@ -89,10 +91,13 @@ export async function runConnectCommand({
       process.exit(0);
     } catch (error) {
       spinner.fail(`Failed to generate MCP config: ${error}`);
-      process.exit(0);
+      process.exit(1);
     }
   } catch (error) {
-    spinner.fail(`Connection failed.`);
-    process.exit(0);
-  }
+    spinner.fail(`Connection failed. Please check your connection string and retry`);
+    if (dbConnection) {
+      await dbConnection.disconnect();
+    }
+    process.exit(1);
+  } 
 }
