@@ -1,7 +1,7 @@
 {
   "name": "@sequelsh/mcp",
   "module": "bin/index.ts",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "dist/index.js",
   "bin": {
     "mcp": "dist/index.js"
