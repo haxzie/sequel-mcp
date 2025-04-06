@@ -25,9 +25,9 @@
     "lint": "bun x eslint . --ext .ts",
     "start": "bun run bin/index.ts -d postgresql",
     "mcp:install": "bun run bin/index.ts install -d postgresql -c claude",
-    "prepublishOnly": "NODE_ENV=production bun run build && bun run typecheck",
     "release": "standard-version --release-as patch",
-    "release:major": "standard-version --release-as major"
+    "release:major": "standard-version --release-as major",
+    "prepublishOnly": "NODE_ENV=production bun run release && bun run build && bun run typecheck"
   },
   "devDependencies": {
     "@types/bun": "latest",
