@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.15](https://github.com/haxzie/sequel-mcp/compare/v0.0.14...v0.0.15) (2025-04-06)
+
 ### [0.0.14](https://github.com/haxzie/sequel-mcp/compare/v0.0.13...v0.0.14) (2025-04-06)
 
 ### [0.0.13](https://github.com/haxzie/sequel-mcp/compare/v0.0.12...v0.0.13) (2025-04-06)
