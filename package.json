@@ -3,6 +3,9 @@
   "module": "bin/index.ts",
   "version": "0.0.6",
   "main": "dist/index.js",
+  "bin": {
+    "mcp": "dist/index.js"
+  },
   "description": "Sequel's Model Context Protocol CLI for Databace MCPs",
   "type": "module",
   "author": {
