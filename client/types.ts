@@ -11,7 +11,7 @@ export interface MCPClinetConfig {
 export enum MCPClientType {
   Claude = "claude",
   Cursor = "cursor",
-//   WindSurf = "windsurf",
+  WindSurf = "windsurf",
 }
 
 export enum MCPTransport {
