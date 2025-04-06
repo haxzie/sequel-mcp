@@ -25,5 +25,5 @@ export const generateMCPConfig = async (
   };
 
   // inject the configuration into the mcp client
-  await mcpClient.injectConfig(mcpConfig);
+  await mcpClient.injectConfig(mcpConfig, databaseConfig.id);
 };

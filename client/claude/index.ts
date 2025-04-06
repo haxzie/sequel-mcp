@@ -48,11 +48,11 @@ export const Claude = createMCPClient({
   description:
     "Claude is a powerful AI assistant that can help you with various tasks.",
   transport: MCPTransport.SSE,
-  injectConfig: async (config: MCPConfig) => {
+  injectConfig: async (config: MCPConfig, database: string) => {
     // get the client config
     try {
       let claudeConfig = await getClaudeClientConfig();
-      const serverName = `sequel_postgres_${generateRandomId(6)}`;
+      const serverName = `sequel_${database}_${generateRandomId(6)}`;
       if (claudeConfig && claudeConfig.mcpServers) {
         claudeConfig.mcpServers = {
           ...claudeConfig.mcpServers,

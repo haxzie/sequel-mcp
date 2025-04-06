@@ -10,7 +10,7 @@ export interface MCPClinetConfig {
 
 export enum MCPClientType {
   Claude = "claude",
-//   Cursor = "cursor",
+  Cursor = "cursor",
 //   WindSurf = "windsurf",
 }
 
@@ -24,5 +24,5 @@ export interface MCPClient {
   name: string;
   description: string;
   transport: MCPTransport;
-  injectConfig: (config: MCPConfig) => Promise<void>;
+  injectConfig: (config: MCPConfig, database: string) => Promise<void>;
 }
