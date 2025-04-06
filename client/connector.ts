@@ -13,7 +13,6 @@ export const generateMCPConfig = async (
   let mcpConfig: MCPConfig;
 
   if (process.env.NODE_ENV === "development") {
-
     mcpConfig = {
       command: "node",
       args: [
