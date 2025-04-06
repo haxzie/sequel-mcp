@@ -11,7 +11,7 @@ export enum CredentialType {
 export enum DatabaseType {
   PostgreSQL = "postgresql",
   MySQL = "mysql",
-//   ClickHouse = "clickhouse",
+  ClickHouse = "clickhouse",
 //   MongoDB = "mongodb",
 }
 

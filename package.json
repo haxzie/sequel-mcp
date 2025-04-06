@@ -17,6 +17,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@clickhouse/client": "^1.11.0",
     "@modelcontextprotocol/sdk": "^1.8.0",
     "chalk": "^5.4.1",
     "commander": "^13.1.0",
