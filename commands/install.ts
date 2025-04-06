@@ -7,6 +7,7 @@ import { isValidMCPClient, MCPClientRegistry } from "client";
 import { injectMCPConfig } from "utils/config";
 import type { DatabaseConnection, DatabaseType } from "database/types";
 import type { MCPClientType } from "client/types";
+import chalk from "chalk";
 
 export async function runConnectCommand({
   database,
@@ -18,6 +19,10 @@ export async function runConnectCommand({
   let dbType = database as DatabaseType;
   let mcpClient = client as MCPClientType;
 
+  /**
+   * Welcome message
+   */
+  console.log(chalk.green(`Sequel MCP Installer ${process.env.npm_package_version}`));
   /**
    * Check if the provided database type and MCP client are valid.
    * If not, prompt the user to select a valid option.
@@ -88,6 +93,17 @@ export async function runConnectCommand({
         client: mcpClient,
       });
       spinner.succeed(`MCP config generated successfully for ${client.name}!`);
+
+      console.log(
+        `\n${chalk.green(
+          `You can now start using ${dbType} MCP server with ${client.name}!`
+        )}`
+      );
+      console.log(
+        `${chalk.gray(
+          `Learn more about Sequel MCP Server at https://sequel.sh`
+        )}`
+      );
       process.exit(0);
     } catch (error) {
       spinner.fail(`Failed to generate MCP config: ${error}`);

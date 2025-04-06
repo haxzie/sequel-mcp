@@ -12,8 +12,6 @@ export const getClientConfig = async (
     const config = await fs.readFileSync(path, { encoding: "utf-8" });
     // Assuming the config file is a JSON object
     const configData = JSON.parse(config) as MCPClinetConfig;
-
-    console.log(`\n✔ MCP Client config loaded from: ${path}`);
     return configData;
   } catch (error) {
     return {
