@@ -1,6 +1,8 @@
 # @sequel/mcp
 MCP servers for your databases. Query your database from your favourite MCP clients.
 
+![mcp](https://github.com/user-attachments/assets/cf96967d-fc5b-4cb9-9ac0-1c4edf3ec2e2)
+
 ## Usage
 Install the MCP server to your client
 
