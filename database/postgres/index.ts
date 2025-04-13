@@ -12,7 +12,9 @@ export const Postgres = createDatabaseConnector({
   },
   connect: async (credential) => {
     const { connectionString } = credential;
-    const sql = postgres(connectionString, {});
+    const sql = postgres(connectionString, {
+      ssl: "prefer",
+    });
 
     return {
       test: async () => {
