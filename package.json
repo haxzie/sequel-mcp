@@ -1,7 +1,7 @@
 {
   "name": "@sequelsh/mcp",
   "module": "bin/index.ts",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Sequel's Model Context Protocol CLI for Databace MCPs",
   "type": "module",
   "bin": {
