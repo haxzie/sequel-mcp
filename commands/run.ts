@@ -99,6 +99,14 @@ export const runServer = async (
             },
           },
         },
+        {
+          name: "schema",
+          description: `Get the schema of the connected ${database} database. Use this tool to understand the database structure.`,
+          inputSchema: {
+            type: "object",
+            properties: {},
+          },
+        },
       ],
     };
   });
@@ -131,6 +139,44 @@ export const runServer = async (
             {
               type: "text",
               text: `Error executing query: ${
+                error instanceof Error ? error.message : "Unknown error"
+              }`,
+            },
+          ],
+          isError: true,
+        };
+      }
+    } else if (request.params.name === "schema") {
+      const db = DatabaseRegistry[database];
+      const databaseURL = process.env.DATABASE_URL;
+      if (!databaseURL) {
+        throw new Error("DATABASE_URL is not set");
+      }
+
+      let connection;
+      try {
+        connection = await db.connect({ connectionString: databaseURL });
+        const schema = await connection.getSchema();
+        const schemaContext = generateSchemaContext(schema);
+        await connection.disconnect();
+        return {
+          content: [
+            {
+              type: "text",
+              text: schemaContext,
+            },
+          ],
+        };
+      } catch (error) {
+        console.error(error);
+        if (connection) {
+          await connection.disconnect();
+        }
+        return {
+          content: [
+            {
+              type: "text",
+              text: `Error getting schema: ${
                 error instanceof Error ? error.message : "Unknown error"
               }`,
             },
