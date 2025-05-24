@@ -54,17 +54,21 @@ export const injectMCPConfig = async ({
     throw new Error(`Database ${database} not found`);
   }
 
-
   const configPath = mcpClient.configPath;
   let clientConfig = await getClientConfig(configPath);
   const mcpServerName = `sequel_${database}_${generateRandomId(6)}`;
 
   let mcpConfig: MCPConfig;
   if (process.env.SEQUEL_ENV === "development") {
+    if (!process.env.SEQUEL_BIN_PATH) {
+      throw new Error(
+        "SEQUEL_BIN_PATH is not set. Please set it to the path of the sequel binary."
+      );
+    }
     mcpConfig = {
       command: "node",
       args: [
-        "/Users/musthaqahamad/projects/sequel.sh/mcp/dist/index.js",
+        process.env.SEQUEL_BIN_PATH,
         "run",
         databaseConfig.id,
         `--transport`,
