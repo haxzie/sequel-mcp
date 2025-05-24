@@ -60,7 +60,7 @@ export const injectMCPConfig = async ({
   const mcpServerName = `sequel_${database}_${generateRandomId(6)}`;
 
   let mcpConfig: MCPConfig;
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.SEQUEL_ENV === "development") {
     mcpConfig = {
       command: "node",
       args: [
