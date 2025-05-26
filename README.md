@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/haxzie-sequel-mcp-badge.png)](https://mseep.ai/app/haxzie-sequel-mcp)
+
 # @sequel/mcp
 MCP servers for your databases. Query your database from your favourite MCP clients.
 
